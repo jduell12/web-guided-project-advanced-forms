@@ -121,7 +121,7 @@ export default function App() {
       role: formValues.role,
       civil: formValues.civil,
       // 🔥 STEP 8- WHAT ABOUT HOBBIES?
-      hobbies: Object.keys(formValues.hobbies).filter(hobbyName => formValues[hobbyName]),
+      hobbies: Object.keys(formValues.hobbies).filter(hobbyName => formValues.hobbies[hobbyName]),
     }
     // 🔥 STEP 9- POST NEW FRIEND USING HELPER
     postNewFriend(newFriend);
@@ -136,7 +136,10 @@ export default function App() {
 
   useEffect(() => {
     // 🔥 STEP 10- ADJUST THE STATUS OF `disabled` EVERY TIME `formValues` CHANGES
-  }, [])
+    formSchema.isValid(formValues).then(valid => {
+      setDisabled(!valid);
+    })
+  }, [formValues])
 
   return (
     <div className='container'>
