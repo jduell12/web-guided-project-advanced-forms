@@ -90,6 +90,21 @@ export default function App() {
     const value = evt.target.value
 
     // 🔥 STEP 11- RUN VALIDATION WITH YUP
+    Yup
+      .reach(formSchema, name)
+      .validate(value)
+      .then(() => {
+        setFormErrors({
+          ...formErrors,
+          [name]: ''
+        })
+      })
+      .catch(err => {
+        setFormErrors({
+          ...formErrors,
+          [name]: err.errors[0]
+        })
+      })
 
     setFormValues({
       ...formValues,
