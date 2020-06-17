@@ -77,7 +77,9 @@ export default function App() {
       .catch(err => {
         console.log(err);
       })
-      .finally(setFormValues(initialFormValues))
+      .finally( () => {
+        setFormValues(initialFormValues)
+      })
   }
 
   //////////////// EVENT HANDLERS ////////////////
@@ -100,6 +102,14 @@ export default function App() {
     // a) pull the `name` of the checkbox from the event
     // b) pull whether `checked` true or false, from the event
     // c) set a new state for the whole form
+    const {name, checked} = evt.target
+    setFormValues({
+      ...formValues, 
+      hobbies:{
+        ...formValues.hobbies,
+        [name]:checked
+      } 
+    })
   }
 
   const onSubmit = evt => {
