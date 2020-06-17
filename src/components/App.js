@@ -10,6 +10,9 @@ import FriendForm from './FriendForm'
 // 🔥 STEP 2- FLESH OUT FriendForm.jsx
 // 🔥 STEP 3- FLESH THE SCHEMA IN ITS OWN FILE
 // 🔥 STEP 4- IMPORT THE SCHEMA, AXIOS AND YUP
+import formSchema from '../validation/formSchema'
+import axios from 'axios'
+import * as Yup from 'yup'
 
 //////////////// INITIAL STATES ////////////////
 //////////////// INITIAL STATES ////////////////
@@ -54,6 +57,13 @@ export default function App() {
   const getFriends = () => {
     // 🔥 STEP 5- IMPLEMENT! ON SUCCESS PUT FRIENDS IN STATE
     //    helper to [GET] all friends from `http://localhost:4000/friends`
+    axios.get('http://localhost:4000/friends')
+      .then(response => {
+        setFriends(response.data);
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   const postNewFriend = newFriend => {
