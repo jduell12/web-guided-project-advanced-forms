@@ -16,10 +16,11 @@ export default function FriendForm(props) {
         <h2>Add a Friend</h2>
 
         {/* 🔥 DISABLE THE BUTTON */}
-        <button>submit</button>
+        <button disabled={disabled}>submit</button>
 
         <div className='errors'>
           {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
+
         </div>
       </div>
 
@@ -68,11 +69,21 @@ export default function FriendForm(props) {
         {/* ////////// RADIO BUTTONS ////////// */}
         {/* ////////// RADIO BUTTONS ////////// */}
         <label>Single
-
+          <input
+            onChange={onInputChange} 
+            type='radio' 
+            name='civil'
+            value='Single'
+          />
         </label>
 
         <label>Married
-
+          <input
+            onChange={onInputChange} 
+            type='radio' 
+            name='civil'
+            value='Married'
+          />
         </label>
       </div>
 
