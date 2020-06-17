@@ -20,7 +20,10 @@ export default function FriendForm(props) {
 
         <div className='errors'>
           {/* 🔥 RENDER THE VALIDATION ERRORS HERE */}
-
+          <p>{errors.username}</p>
+          <p>{errors.email}</p>
+          <p>{errors.civil}</p>
+          <p>{errors.role}</p>
         </div>
       </div>
 
